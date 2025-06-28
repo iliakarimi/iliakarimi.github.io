@@ -53,7 +53,7 @@ body {
     animation: slideUp 1s forwards;
 }
 .social-links a:hover {
-    color: #fba62a;
+    color: #2083e0;
     transform: scale(1.2);
 }
 @keyframes fadeIn {

@@ -44,7 +44,7 @@ body {
 }
 #end_of_site {
     position: absolute;
-    bottom: 397px;
+    bottom: 375px;
     left: 60%;
     transform: translateX(-50%);
     width: 35%;

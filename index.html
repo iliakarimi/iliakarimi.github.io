@@ -1,58 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ilia Karimi official Website</title>
-    <link rel="stylesheet" href="Styles/style.css">
-    <link rel="icon" href="assets/icon.png" type="image/png">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ilia Karimi Official Website</title>
+  <link rel="stylesheet" href="Styles/style.css">
+  <link rel="icon" href="assets/icon.png" type="image/png">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
-    <div id="preloader" role="status" aria-live="polite">
-        <div class="spinner" aria-hidden="true"></div>
-    </div>
-    <div class="content">
-        <h2>Cooking something amazing here(Maybe stupid)...</h2>
-        <h1>Thanks for your patience!</h1>
-    </div>
-    <audio autoplay loop>
-        <source src="assets/bg-music.wav">
-        <source src="assets/bg-music.mp3">
-        <source src="assets/bg-music.ogg">
-        This browser does not support the audio format
-    </audio>
-    <div class="social-links">
-        <a href="https://x.com/theiliakarimi" alt="x(formerly twitter)" title="x(formerly twitter)"><i class='bx bxl-twitter'></i></a>
-        <a href="https://www.instagram.com/theiliakarimi" alt="Instagram" title="instagram"><i class='bx bxl-instagram'></i></a>
-        <a href="http://www.youtube.com/@theiliakarimi" alt="Youtube" title="youtube"><i class='bx bxl-youtube'></i></a>
-        <a href="https://github.com/iliakarimi" alt="Github" title="github"><i class='bx bxl-github'></i></a>
-        <a href="https://www.linkedin.com/in/iliakarimi" alt="LinkedIn" title="Linkedin"><i class='bx bxl-linkedin'></i></a>
-    </div>
-    <img src="assets/end_of_site.gif" id="end_of_site">
-    <script>
-        function waitForImages() {
-        const imgs = Array.from(document.images);
-        return Promise.all(imgs.map(img => {
-            if (img.complete) return Promise.resolve();
-            return new Promise(res => {
-            img.addEventListener('load', res);
-            img.addEventListener('error', res);
-            });
-        }));
-        }
+  <div id="preloader" role="status" aria-live="polite">
+    <div class="spinner" aria-hidden="true"></div>
+  </div>
 
-        const fontsReady = (document.fonts && document.fonts.ready) ? document.fonts.ready : Promise.resolve();
+  <div class="content">
+    <h2>Cooking something amazing here (Maybe stupid)...</h2>
+    <h1>Thanks for your patience!</h1>
+  </div>
 
-        const apiFetch = fetch('/api/initial-data').then(r => r.json()).catch(()=>null);
+  <audio autoplay loop>
+    <source src="assets/bg-music.wav">
+    <source src="assets/bg-music.mp3">
+    <source src="assets/bg-music.ogg">
+    This browser does not support the audio format
+  </audio>
 
-        Promise.all([waitForImages(), fontsReady, apiFetch])
-        .then(([_, __, apiData]) => {
-            document.body.classList.add('loaded');
-            document.getElementById('preloader')?.remove();
+  <div class="social-links">
+    <a href="https://x.com/theiliakarimi" title="X (Twitter)"><i class='bx bxl-twitter'></i></a>
+    <a href="https://www.instagram.com/theiliakarimi" title="Instagram"><i class='bx bxl-instagram'></i></a>
+    <a href="http://www.youtube.com/@theiliakarimi" title="YouTube"><i class='bx bxl-youtube'></i></a>
+    <a href="https://github.com/iliakarimi" title="GitHub"><i class='bx bxl-github'></i></a>
+    <a href="https://www.linkedin.com/in/iliakarimi" title="LinkedIn"><i class='bx bxl-linkedin'></i></a>
+  </div>
+
+  <img src="assets/end_of_site.gif" id="end_of_site" alt="end of site">
+
+  <script>
+    // صبر کن تا همه‌ی تصاویر و فونت‌ها لود بشن
+    function waitForImages() {
+      const imgs = Array.from(document.images);
+      return Promise.all(imgs.map(img => {
+        if (img.complete) return Promise.resolve();
+        return new Promise(res => {
+          img.addEventListener('load', res);
+          img.addEventListener('error', res);
         });
-    </script>
-</body>
+      }));
+    }
 
+    const fontsReady = (document.fonts && document.fonts.ready) ? document.fonts.ready : Promise.resolve();
+    const apiFetch = fetch('/api/initial-data').then(r => r.json()).catch(() => null);
+
+    Promise.all([waitForImages(), fontsReady, apiFetch])
+    .then(() => {
+      document.body.classList.add('loaded');
+      const preloader = document.getElementById('preloader');
+      if (preloader) {
+        preloader.classList.add('hidden'); // شروع fade
+        preloader.addEventListener('transitionend', () => preloader.remove(), { once: true });
+      }
+    });
+  </script>
+</body>
 </html>

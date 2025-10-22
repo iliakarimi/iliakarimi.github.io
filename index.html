@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ilia Karimi official Website</title>
     <link rel="stylesheet" href="Styles/style.css">
-    <link rel="icon" href="image/icon.png" type="image/png">
+    <link rel="icon" href="assets/icon.png" type="image/png">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
@@ -32,7 +32,6 @@
     </div>
     <img src="assets/end_of_site.gif" id="end_of_site">
     <script>
-        // utility: صبر برای همه تصاویر صفحه
         function waitForImages() {
         const imgs = Array.from(document.images);
         return Promise.all(imgs.map(img => {
@@ -44,17 +43,14 @@
         }));
         }
 
-        // صبر برای فونت‌ها (modern browsers)
         const fontsReady = (document.fonts && document.fonts.ready) ? document.fonts.ready : Promise.resolve();
 
         const apiFetch = fetch('/api/initial-data').then(r => r.json()).catch(()=>null);
 
         Promise.all([waitForImages(), fontsReady, apiFetch])
         .then(([_, __, apiData]) => {
-            // همه چیز آماده است — preloader را بردار و محتوای سایت را مقداردهی کن
             document.body.classList.add('loaded');
             document.getElementById('preloader')?.remove();
-            // استفاده از apiData برای رندر اولیه...
         });
     </script>
 </body>

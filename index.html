@@ -10,6 +10,9 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
+    <div id="preloader" role="status" aria-live="polite">
+        <div class="spinner" aria-hidden="true"></div>
+    </div>
     <div class="content">
         <h2>Cooking something amazing here(Maybe stupid)...</h2>
         <h1>Thanks for your patience!</h1>
@@ -28,6 +31,32 @@
         <a href="https://www.linkedin.com/in/iliakarimi" alt="LinkedIn" title="Linkedin"><i class='bx bxl-linkedin'></i></a>
     </div>
     <img src="assets/end_of_site.gif" id="end_of_site">
-    
+    <script>
+        // utility: صبر برای همه تصاویر صفحه
+        function waitForImages() {
+        const imgs = Array.from(document.images);
+        return Promise.all(imgs.map(img => {
+            if (img.complete) return Promise.resolve();
+            return new Promise(res => {
+            img.addEventListener('load', res);
+            img.addEventListener('error', res);
+            });
+        }));
+        }
+
+        // صبر برای فونت‌ها (modern browsers)
+        const fontsReady = (document.fonts && document.fonts.ready) ? document.fonts.ready : Promise.resolve();
+
+        const apiFetch = fetch('/api/initial-data').then(r => r.json()).catch(()=>null);
+
+        Promise.all([waitForImages(), fontsReady, apiFetch])
+        .then(([_, __, apiData]) => {
+            // همه چیز آماده است — preloader را بردار و محتوای سایت را مقداردهی کن
+            document.body.classList.add('loaded');
+            document.getElementById('preloader')?.remove();
+            // استفاده از apiData برای رندر اولیه...
+        });
+    </script>
 </body>
+
 </html>

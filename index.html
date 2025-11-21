@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ilia Karimi Website</title>
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="Styles/style.css" rel="stylesheet">
+</head>
+<body>
+  <div id="preloader">
+    <div class="spinner"></div>
+    <div class="loading-text">Loading</div>
+  </div>
+
+  <div class="container">
+    <div class="hero">
+      <div class="hero-content">
+        <h1>Ilia Karimi</h1>
+        <div class="subtitle">Software Engineer</div>
+        <p class="bio">
+          I read and learn things no one asks me to. I’m Ilia — someone who loves creating new things. YEEAAAHHH Science!
+        </p>
+        
+        <div class="status-badge">
+          <div class="status-dot"></div>
+          <span>Currently building <strong>Viora</strong> – Your Autonomous Agent-Assistant</span>
+        </div>
+
+        <div class="social-links">
+          <a href="https://github.com/iliakarimi" target="_blank" rel="noopener" title="GitHub">
+            <i class='bx bxl-github'></i>
+          </a>
+          <a href="https://www.linkedin.com/in/iliakarimi" target="_blank" rel="noopener" title="LinkedIn">
+            <i class='bx bxl-linkedin'></i>
+          </a>
+          <a href="https://x.com/theiliakarimi" target="_blank" rel="noopener" title="X">
+            <i class='bx bxl-twitter'></i>
+          </a>
+          <a href="https://www.instagram.com/theiliakarimi" target="_blank" rel="noopener" title="Instagram">
+            <i class='bx bxl-instagram'></i>
+          </a>
+          <a href="http://www.youtube.com/@theiliakarimi" target="_blank" rel="noopener" title="YouTube">
+            <i class='bx bxl-youtube'></i>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Add your sections here: About Me, Projects, etc. -->
+    <!-- Example structure:
+    <section class="content-section">
+      <h2 class="section-title">About Me</h2>
+      Your content here
+    </section>
+    
+    <section class="content-section">
+      <h2 class="section-title">Projects</h2>
+      Your content here
+    </section>
+    -->
+
+    <!-- Donate Section -->
+    <section class="content-section donate-section">
+      <h2 class="section-title">Support My Work</h2>
+      <p class="donate-description">
+        If you find my work valuable or want to support my research and open-source projects, 
+        you can donate using cryptocurrency. Every contribution helps me continue building and learning.
+      </p>
+      
+      <div class="crypto-grid">
+        <div class="crypto-card" onclick="copyAddress('bc1qtsvqcue4205lv0ngjmsqsgrhprmlptk6ehz0ef', 'Bitcoin')">
+          <div class="crypto-header">
+            <div class="crypto-icon">₿</div>
+            <div>
+              <div class="crypto-name">Bitcoin</div>
+              <div class="crypto-network">BTC</div>
+            </div>
+          </div>
+          <div class="crypto-address">bc1qtsvqcue4205lv0ngjmsqsgrhprmlptk6ehz0ef</div>
+          <div class="copy-hint">Click to copy address</div>
+        </div>
+
+        <div class="crypto-card" onclick="copyAddress('0x193D50462f4A1Fd4c2f794E11871b8E90Ded79E8', 'Ethereum')">
+          <div class="crypto-header">
+            <div class="crypto-icon">Ξ</div>
+            <div>
+              <div class="crypto-name">Ethereum</div>
+              <div class="crypto-network">ETH</div>
+            </div>
+          </div>
+          <div class="crypto-address">0x193D50462f4A1Fd4c2f794E11871b8E90Ded79E8</div>
+          <div class="copy-hint">Click to copy address</div>
+        </div>
+
+        <div class="crypto-card" onclick="copyAddress('0x193D50462f4A1Fd4c2f794E11871b8E90Ded79E8', 'Tether')">
+          <div class="crypto-header">
+            <div class="crypto-icon">₮</div>
+            <div>
+              <div class="crypto-name">Tether</div>
+              <div class="crypto-network">USDT (Ethereum Network)</div>
+            </div>
+          </div>
+          <div class="crypto-address">0x193D50462f4A1Fd4c2f794E11871b8E90Ded79E8</div>
+          <div class="copy-hint">Click to copy address</div>
+        </div>
+      </div>
+    </section>
+
+    <div class="end-section">
+      <img src="assets/end_of_site.gif" alt="End of site" class="end-gif" id="endGif">
+    </div>
+
+    <audio id="bgMusic" loop>
+      <source src="assets/bg-music.mp3" type="audio/mpeg">
+      <source src="assets/bg-music.wav" type="audio/wav">
+      <source src="assets/bg-music.ogg" type="audio/ogg">
+    </audio>
+
+    <footer>
+      <p>&copy; 2025 Ilia Karimi. All rights reserved.</p>
+      <p class="footer-quote">"I just like to know."</p>
+      <p style="margin-top: 10px; font-size: 0.75rem; color: #8b8b8b;">Made with Claude, optimized by Ilia</p>
+    </footer>
+  </div>
+
+  <div class="copied-notification" id="copiedNotification">
+    Address copied to clipboard!
+  </div>
+
+  <script src="scripts/script.js"></script>
+</body>
+</html>

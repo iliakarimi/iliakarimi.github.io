@@ -1,0 +1,438 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background-color: #fafaf8;
+  color: #1a1a1a;
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+#preloader {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #fafaf8;
+  z-index: 9999;
+  transition: opacity 0.6s ease-in-out, visibility 0.6s ease-in-out;
+}
+
+#preloader.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 2px solid #e5e5e0;
+  border-top-color: #1a1a1a;
+  border-radius: 50%;
+  animation: spin 1s ease-in-out infinite;
+}
+
+.loading-text {
+  margin-top: 20px;
+  color: #1a1a1a;
+  font-size: 0.75rem;
+  letter-spacing: 3px;
+  font-weight: 300;
+  text-transform: uppercase;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.container {
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+body.loaded .container {
+  opacity: 1;
+}
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 80px 60px 60px;
+  text-align: center;
+}
+
+.hero-content h1 {
+  font-family: 'Dancing Script', cursive;
+  font-size: 5rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: #1a1a1a;
+  line-height: 1;
+}
+
+.hero-content .subtitle {
+  font-size: 1rem;
+  color: #6b6b6b;
+  margin-bottom: 35px;
+  font-weight: 300;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.hero-content .bio {
+  max-width: 550px;
+  font-size: 0.95rem;
+  color: #4a4a4a;
+  margin-bottom: 35px;
+  line-height: 1.7;
+  font-weight: 300;
+}
+
+.social-links {
+  display: flex;
+  gap: 18px;
+  margin-top: 30px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.social-links a {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1.5px solid #1a1a1a;
+  border-radius: 50%;
+  color: #1a1a1a;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+  background: transparent;
+}
+
+.social-links a:hover {
+  background: #1a1a1a;
+  color: #fafaf8;
+  transform: translateY(-3px);
+}
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 22px;
+  background: #ffffff;
+  border: 1.5px solid #e5e5e0;
+  border-radius: 50px;
+  margin-top: 30px;
+  font-size: 0.85rem;
+  font-weight: 400;
+  color: #1a1a1a;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.status-dot {
+  width: 7px;
+  height: 7px;
+  background: #1a1a1a;
+  border-radius: 50%;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(0.9); }
+}
+
+.status-badge strong {
+  font-weight: 600;
+}
+
+.end-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 60px;
+  gap: 30px;
+}
+
+.end-gif {
+  max-width: 350px;
+  width: 100%;
+  height: auto;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.end-gif.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+footer {
+  padding: 35px 60px;
+  text-align: center;
+  color: #6b6b6b;
+  font-size: 0.8rem;
+  font-weight: 300;
+}
+
+.footer-quote {
+  font-style: italic;
+  margin-top: 8px;
+  color: #4a4a4a;
+  font-weight: 400;
+}
+
+/* Content sections template - ready for your content */
+.content-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 60px 60px;
+}
+
+.section-title {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+/* Donate Section */
+.donate-section {
+  background: #ffffff;
+  border-top: 1px solid #e5e5e0;
+}
+
+.donate-description {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto 40px;
+  color: #4a4a4a;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  font-weight: 300;
+}
+
+.crypto-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.crypto-card {
+  background: #fafaf8;
+  border: 1.5px solid #e5e5e0;
+  border-radius: 12px;
+  padding: 25px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.crypto-card:hover {
+  border-color: #1a1a1a;
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+.crypto-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 15px;
+}
+
+.crypto-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  background: #1a1a1a;
+  color: #fafaf8;
+}
+
+.crypto-name {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.crypto-network {
+  font-size: 0.75rem;
+  color: #6b6b6b;
+  font-weight: 400;
+}
+
+.crypto-address {
+  background: #ffffff;
+  border: 1px solid #e5e5e0;
+  border-radius: 8px;
+  padding: 12px;
+  font-family: 'Courier New', monospace;
+  font-size: 0.8rem;
+  color: #1a1a1a;
+  word-break: break-all;
+  line-height: 1.5;
+  margin-top: 10px;
+}
+
+.copy-hint {
+  text-align: center;
+  margin-top: 8px;
+  font-size: 0.75rem;
+  color: #6b6b6b;
+  font-style: italic;
+}
+
+.copied-notification {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: #1a1a1a;
+  color: #fafaf8;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.3s ease;
+  pointer-events: none;
+  z-index: 1000;
+}
+
+.copied-notification.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 1024px) {
+  .hero {
+    padding: 70px 40px 50px;
+  }
+
+  .hero-content h1 {
+    font-size: 4.5rem;
+  }
+
+  .content-section {
+    padding: 50px 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 50px 30px 40px;
+  }
+
+  .hero-content h1 {
+    font-size: 3.5rem;
+  }
+
+  .hero-content .subtitle {
+    font-size: 0.9rem;
+    letter-spacing: 1.5px;
+  }
+
+  .hero-content .bio {
+    font-size: 0.9rem;
+  }
+
+  .status-badge {
+    font-size: 0.8rem;
+    padding: 9px 20px;
+  }
+
+  .end-section {
+    padding: 50px 30px;
+  }
+
+  .end-gif {
+    max-width: 300px;
+  }
+
+  .footer {
+    padding: 30px 30px;
+  }
+
+  .content-section {
+    padding: 40px 30px;
+  }
+
+  .section-title {
+    font-size: 1.7rem;
+  }
+
+  .crypto-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-content h1 {
+    font-size: 2.8rem;
+  }
+
+  .hero-content .subtitle {
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+  }
+
+  .hero-content .bio {
+    font-size: 0.88rem;
+  }
+
+  .social-links a {
+    width: 38px;
+    height: 38px;
+    font-size: 1rem;
+  }
+
+  .status-badge {
+    font-size: 0.75rem;
+    padding: 8px 18px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .end-gif {
+    max-width: 260px;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+  }
+
+  .crypto-card {
+    padding: 20px;
+  }
+
+  .crypto-address {
+    font-size: 0.75rem;
+    padding: 10px;
+  }
+
+  .copied-notification {
+    bottom: 20px;
+    right: 20px;
+    font-size: 0.8rem;
+    padding: 10px 20px;
+  }
+}

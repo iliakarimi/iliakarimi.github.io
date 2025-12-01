@@ -126,6 +126,11 @@ body.loaded .container {
   transform: translateY(-3px);
 }
 
+.social-links a:focus {
+  outline: 2px solid #1a1a1a;
+  outline-offset: 2px;
+}
+
 .status-badge {
   display: inline-flex;
   align-items: center;
@@ -210,6 +215,46 @@ footer {
   text-align: center;
 }
 
+/* Viora Section */
+.viora-section {
+  background: linear-gradient(135deg, #f8f9fa 0%, #fafaf8 100%);
+  border-top: 1px solid #e5e5e0;
+  border-bottom: 1px solid #e5e5e0;
+}
+
+.viora-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.viora-content p {
+  color: #4a4a4a;
+  font-size: 0.95rem;
+  line-height: 1.8;
+  margin-bottom: 20px;
+  font-weight: 300;
+}
+
+.viora-content strong {
+  color: #1a1a1a;
+  font-weight: 600;
+}
+
+.development-status {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 24px;
+  background: #000000;
+  color: #47a6ff;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+#ds-strong {
+  color: #ffffff;
+}
+
 /* Donate Section */
 .donate-section {
   background: #ffffff;
@@ -249,6 +294,15 @@ footer {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
 }
 
+.crypto-card:focus {
+  outline: 2px solid #1a1a1a;
+  outline-offset: 2px;
+}
+
+.crypto-card:active {
+  transform: translateY(-1px);
+}
+
 .crypto-header {
   display: flex;
   align-items: center;
@@ -272,6 +326,7 @@ footer {
   font-size: 1.1rem;
   font-weight: 600;
   color: #1a1a1a;
+  margin: 0;
 }
 
 .crypto-network {
@@ -315,11 +370,29 @@ footer {
   transition: all 0.3s ease;
   pointer-events: none;
   z-index: 1000;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .copied-notification.show {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* Performance optimizations */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Focus visible for better accessibility */
+:focus-visible {
+  outline: 2px solid #1a1a1a;
+  outline-offset: 2px;
 }
 
 @media (max-width: 1024px) {
@@ -367,7 +440,7 @@ footer {
     max-width: 300px;
   }
 
-  .footer {
+  footer {
     padding: 30px 30px;
   }
 
@@ -434,5 +507,22 @@ footer {
     right: 20px;
     font-size: 0.8rem;
     padding: 10px 20px;
+  }
+}
+
+/* Print styles for better SEO */
+@media print {
+  .social-links,
+  .status-badge,
+  .donate-section,
+  .end-section,
+  #bgMusic,
+  .copied-notification {
+    display: none;
+  }
+  
+  body {
+    background: white;
+    color: black;
   }
 }

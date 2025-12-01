@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://iliakarimi.github.io/sitemap.xml

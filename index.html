@@ -159,6 +159,27 @@
     <div class="spinner"></div>
     <div class="loading-text">Loading</div>
   </div>
+  
+  <nav class="site-nav" id="siteNav" role="navigation" aria-label="Main navigation">
+    <a href="index.html" class="nav-logo" aria-label="Ilia Karimi — Home">Ilia Karimi</a>
+    <ul class="nav-links">
+      <li><a href="index.html" class="active" aria-current="page">Home</a></li>
+      <li><a href="research.html">Research</a></li>
+      <li><a href="mailto:iliakarimi.dev@gmail.com">Contact</a></li>
+    </ul>
+    <button class="nav-hamburger" id="hamburger"
+      aria-label="Open menu" aria-expanded="false" aria-controls="mobileDrawer">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="nav-drawer" id="mobileDrawer" aria-hidden="true" role="dialog" aria-label="Navigation menu">
+    <ul>
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="research.html">Research</a></li>
+      <li><a href="mailto:iliakarimi.dev@gmail.com">Contact</a></li>
+    </ul>
+  </div>
 
   <div class="container">
     <main id="main-content">
@@ -191,7 +212,7 @@
             <a href="http://www.youtube.com/@theiliakarimi" target="_blank" rel="noopener noreferrer" title="YouTube - Ilia Karimi" aria-label="Visit Ilia Karimi's YouTube channel">
               <i class='bx bxl-youtube' aria-hidden="true"></i>
             </a>
-            <a href="mailto:iliakarimi.dev@gmail.com" target="_blank" rel="noopener noreferrer" title="Email Ilia Karimi" aria-label="Send email to Ilia Karimi">
+            <a href="/cdn-cgi/l/email-protection#4c2520252d272d3e2521256228293a0c2b212d2520622f2321" target="_blank" rel="noopener noreferrer" title="Email Ilia Karimi" aria-label="Send email to Ilia Karimi">
               <i class='bx bx-mail-send' aria-hidden="true"></i>
             </a>
           </nav>
@@ -283,5 +304,38 @@
   </div>
 
   <script src="scripts/script.js"></script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-c
+  <script>
+    const navEl = document.getElementById('siteNav');
+    if (navEl) {
+      window.addEvent
+    }
+    // Hamburger nav
+    const hamburger = document.getElementById('hamburger');
+    const drawer    = document.getElementById('mobileDrawer');
+    if (hamburger && drawer) {
+      function openMenu() {
+        hamburger.classList.add('open'); drawer.classList.add('open');
+        hamburger.setAttribute('aria-expanded', 'true');
+        drawer.setAttribute('aria-hidden', 'false');
+        hamburger.setAttribute('aria-label', 'Close menu');
+      }
+      function closeMenu() {
+        hamburger.classList.remove('open'); drawer.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+        drawer.setAttribute('aria-hidden', 'true');
+        hamburger.setAttribute('aria-label', 'Open menu');
+      }
+      hamburger.addEventListener('click', (e) => {
+        e.stopPropagation();
+        hamburger.classList.contains('open') ? closeMenu() : openMenu();
+      });
+      drawer.querySelectorAll('a').forEach(l => l.addEventListener('click', closeMenu));
+      document.addEventListener('click', (e) => {
+        if (!document.getElementById('siteNav').contains(e.target) && !drawer.contains(e.target)) closeMenu();
+      });
+      document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMenu(); });
+    }
+  </script>
 </body>
 </html>

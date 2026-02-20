@@ -242,3 +242,34 @@ if ('serviceWorker' in navigator) {
     });
   });
 }
+
+const navEl = document.getElementById('siteNav');
+if (navEl) {
+  window.addEvent
+}
+// Hamburger nav
+const hamburger = document.getElementById('hamburger');
+const drawer    = document.getElementById('mobileDrawer');
+if (hamburger && drawer) {
+  function openMenu() {
+    hamburger.classList.add('open'); drawer.classList.add('open');
+    hamburger.setAttribute('aria-expanded', 'true');
+    drawer.setAttribute('aria-hidden', 'false');
+    hamburger.setAttribute('aria-label', 'Close menu');
+  }
+  function closeMenu() {
+    hamburger.classList.remove('open'); drawer.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', 'false');
+    drawer.setAttribute('aria-hidden', 'true');
+    hamburger.setAttribute('aria-label', 'Open menu');
+  }
+  hamburger.addEventListener('click', (e) => {
+    e.stopPropagation();
+    hamburger.classList.contains('open') ? closeMenu() : openMenu();
+  });
+  drawer.querySelectorAll('a').forEach(l => l.addEventListener('click', closeMenu));
+  document.addEventListener('click', (e) => {
+    if (!document.getElementById('siteNav').contains(e.target) && !drawer.contains(e.target)) closeMenu();
+  });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMenu(); });
+}

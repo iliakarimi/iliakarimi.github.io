@@ -30,19 +30,40 @@
   </div>
 
   <div class="container">
+
+    <!-- ── Nav ── -->
     <nav class="site-nav" id="siteNav" role="navigation" aria-label="Main navigation">
       <a href="index.html" class="nav-logo" aria-label="Ilia Karimi — Home">Ilia Karimi</a>
-      <ul class="nav-links">
+
+      <!-- Desktop -->
+      <ul class="nav-links" aria-label="Site pages">
         <li><a href="index.html">Home</a></li>
         <li><a href="research.html" class="active" aria-current="page">Research</a></li>
         <li><a href="mailto:iliakarimi.dev@gmail.com">Contact</a></li>
       </ul>
+
+      <!-- Mobile hamburger -->
+      <button class="nav-hamburger" id="hamburger"
+        aria-label="Open menu" aria-expanded="false" aria-controls="mobileDrawer">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
     </nav>
+
+    <!-- Mobile drawer -->
+    <div class="nav-drawer" id="mobileDrawer" aria-hidden="true" role="dialog" aria-label="Navigation menu">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="research.html" class="active">Research</a></li>
+        <li><a href="mailto:iliakarimi.dev@gmail.com">Contact</a></li>
+      </ul>
+    </div>
 
     <main id="main-content">
       <section class="wip-section" aria-label="Page under construction">
         <div class="wip-content">
-          <div class="wip-icon" aria-hidden="true"></div>
+          <div class="wip-icon" aria-hidden="true">⚗️</div>
           <h1 class="wip-title">Working on it.</h1>
           <p class="wip-desc">This page is still being put together — check back soon.</p>
           <a href="index.html" class="wip-back">← Back to Home</a>
@@ -53,9 +74,69 @@
     <footer role="contentinfo">
       <p>&copy; 2025 Ilia Karimi. All rights reserved.</p>
       <p class="footer-quote">"I just like to know."</p>
-      <p style="margin-top: 10px; font-size: 0.75rem; color: #8b8b8b;">Made with Claude, optimized by Ilia</p>
+      <p style="margin-top: 8px; font-size: 0.72rem; color: #8b8b8b;">Made with Claude, optimized by Ilia</p>
     </footer>
-  </div>
-  <script src="scripts/research.js"></script>
+
+  <script>
+    // Preloader
+    window.addEventListener('load', () => {
+      const preloader = document.getElementById('preloader');
+      const start = performance.now();
+      const wait = Math.max(0, 800 - (performance.now() - start));
+      setTimeout(() => {
+        document.body.classList.add('loaded');
+        if (preloader) {
+          preloader.classList.add('hidden');
+          setTimeout(() => preloader.remove(), 600);
+        }
+      }, wait);
+    });
+
+    // Nav scroll border
+    const nav = document.getElementById('siteNav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 10);
+    }, { passive: true });
+
+    // Hamburger
+    const hamburger = document.getElementById('hamburger');
+    const drawer    = document.getElementById('mobileDrawer');
+
+    function openMenu() {
+      hamburger.classList.add('open');
+      drawer.classList.add('open');
+      hamburger.setAttribute('aria-expanded', 'true');
+      drawer.setAttribute('aria-hidden', 'false');
+      hamburger.setAttribute('aria-label', 'Close menu');
+    }
+
+    function closeMenu() {
+      hamburger.classList.remove('open');
+      drawer.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+      drawer.setAttribute('aria-hidden', 'true');
+      hamburger.setAttribute('aria-label', 'Open menu');
+    }
+
+    hamburger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      hamburger.classList.contains('open') ? closeMenu() : openMenu();
+    });
+
+    // Close on drawer link tap
+    drawer.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', closeMenu);
+    });
+
+    // Close on outside tap
+    document.addEventListener('click', (e) => {
+      if (!nav.contains(e.target) && !drawer.contains(e.target)) closeMenu();
+    });
+
+    // Close on Escape
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeMenu();
+    });
+  </script>
 </body>
 </html>

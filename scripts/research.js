@@ -13,8 +13,3 @@ window.addEventListener('load', () => {
     }, wait);
     }, 0);
 });
-
-const nav = document.getElementById('siteNav');
-window.addEventListener('scroll', () => {
-    nav.classList.toggle('scrolled', window.scrollY > 20);
-}, { passive: true });

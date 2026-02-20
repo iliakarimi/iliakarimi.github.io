@@ -179,16 +179,6 @@ body.loaded .container { opacity: 1; }
     max-width: 420px; width: 100%;
 }
 
-.wip-icon {
-    font-size: 2.8rem;
-    animation: float 3s ease-in-out infinite;
-    line-height: 1;
-}
-@keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50%       { transform: translateY(-8px); }
-}
-
 .wip-title {
     font-family: 'Dancing Script', cursive;
     font-size: clamp(2.4rem, 11vw, 4rem);

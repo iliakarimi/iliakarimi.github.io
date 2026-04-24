@@ -1,2 +1,2 @@
-## Ilia Karimi website(Temperory Domain)
+## Ilia Karimi website(Temporary Domain)
 * Using HTML, CSS and Java Script
